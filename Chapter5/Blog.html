@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>블로그 레이아웃</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', '맑은 고딕', 돋움, sans-serif;
+            background: #EEF3F6;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #1F2D3D;
+        }
+
+        #page-wrapper {
+            width: 960px;
+            margin: 20px auto;
+            background: #FFFFFF;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(31, 45, 61, 0.15);
+        }
+
+        #main-header {
+            padding: 30px 10px;
+            border-bottom: 3px solid #0F766E;
+        }
+
+        .master-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 32px;
+            color: #0F2A43;
+            margin-bottom: 5px;
+        }
+
+        .master-description {
+            font-size: 16px;
+            color: #0F766E;
+            font-weight: 500;
+        }
+
+        #main-navigation {
+            border-bottom: 1px solid #D5DEE5;
+            margin-bottom: 20px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .pull-left {
+            float: left;
+        }
+
+        .pull-right {
+            float: right;
+        }
+
+        .outer-menu-item {
+            float: left;
+            position: relative;
+            padding: 0 15px;
+            font-weight: 500;
+            color: #1F2D3D;
+        }
+
+        .outer-menu-item:hover {
+            background: #0F766E;
+            color: white;
+        }
+
+        .outer-menu-item:hover a {
+            color: white;
+        }
+
+        .inner-menu {
+            display: none;
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 120px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(15, 42, 67, 0.25);
+            z-index: 10;
+        }
+
+        .outer-menu-item:hover .inner-menu {
+            display: block;
+        }
+
+        .inner-menu-item a {
+            display: block;
+            padding: 5px 15px;
+            color: #1F2D3D;
+            line-height: 25px;
+            font-weight: 400;
+        }
+
+        .inner-menu-item a:hover {
+            background: #E0F2F1;
+            color: #0F766E;
+        }
+
+        .search-bar {
+            margin-top: 5px;
+        }
+
+        .input-search {
+            padding: 4px 8px;
+            border: 1px solid #B8C7D1;
+            font-family: inherit;
+        }
+
+        .input-search:focus {
+            outline: none;
+            border-color: #0F766E;
+        }
+
+        .input-search-submit {
+            padding: 4px 10px;
+            background: #0F766E;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .input-search-submit:hover {
+            background: #0B5A54;
+        }
+
+        #content {
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        #main-section {
+            float: left;
+            width: 680px;
+        }
+
+        article {
+            padding: 10px 10px 30px 10px;
+            border-bottom: 1px solid #D5DEE5;
+            margin-bottom: 20px;
+        }
+
+        .article-header {
+            padding-bottom: 15px;
+        }
+
+        .article-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 24px;
+            color: #0F2A43;
+            margin-bottom: 5px;
+        }
+
+        .article-date {
+            font-size: 13px;
+            color: #7A8B99;
+        }
+
+        .article-body {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #3C4A57;
+        }
+
+        .article-body img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+            background-color: #DDE6EC;
+        }
+
+        #main-aside {
+            float: right;
+            width: 220px;
+        }
+
+        .aside-list {
+            padding: 10px 10px 25px 10px;
+            border-bottom: 1px solid #E3EAEF;
+        }
+
+        .aside-list>h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0F2A43;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #0F766E;
+        }
+
+        .aside-list li {
+            margin: 8px 0;
+        }
+
+        .aside-list li a {
+            color: #52606D;
+            font-size: 13px;
+        }
+
+        .aside-list li a:hover {
+            color: #0F766E;
+            text-decoration: underline;
+        }
+
+        #main-footer {
+            clear: both;
+            border-top: 1px solid #D5DEE5;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #7A8B99;
+        }
+
+        #main-footer a {
+            color: #0F766E;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="page-wrapper">
+        <header id="main-header">
+            <hgroup>
+                <h1 class="master-title">HTML5 Example Preview</h1>
+                <h2 class="master-description">한빛아카데미</h2>
+            </hgroup>
+        </header>
+        <nav id="main-navigation">
+            <div class="pull-left">
+                <ul class="outer-menu">
+                    <li class="outer-menu-item">
+                        <span class="menu-title">HTML5</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                        </ul>
+                    </li>
+                    <li class="outer-menu-item">
+                        <span class="menu-title">CSS3</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                        </ul>
+                    </li>
+                    <li class="outer-menu-item">
+                        <span class="menu-title">JavaScript</span>
+                        <ul class="inner-menu">
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                            <li class="inner-menu-item"><a href="#">데이터</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="pull-right">
+                <div class="search-bar">
+                    <form>
+                        <input type="text" class="input-search">
+                        <input type="submit" class="input-search-submit" value="검색">
+                    </form>
+                </div>
+            </div>
+        </nav>
+        <div id="content">
+            <section id="main-section">
+                <article>
+                    <div class="article-header">
+                        <h1 class="article-title">HTML5 개요와 활용</h1>
+                        <p class="article-date">2023년 05월 22일</p>
+                    </div>
+                    <div class="article-body">
+                        <img src="https://placehold.co/430x280">
+                        <br>
+                        <br>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                        <br>
+                        <p>Proin ut fringilla sapien..</p>
+                    </div>
+                </article>
+                <article>
+                    <div class="article-header">
+                        <h1 class="article-title">HTML5 응용과 실습</h1>
+                        <p class="article-date">2023년 05월 24일</p>
+                    </div>
+                    <div class="article-body">
+                        <img src="https://placehold.co/430x280">
+                        <br>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                        <br>
+                        <p>Proin ut fringilla sapien.</p>
+                    </div>
+                </article>
+            </section>
+            <aside id="main-aside">
+                <div class="aside-list">
+                    <h3>카테고리</h3>
+                    <ul>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                    </ul>
+                </div>
+                <div class="aside-list">
+                    <h3>최근 글</h3>
+                    <ul>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                        <li><a href="#">데이터</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+        <footer id="main-footer">
+            <a href="#">ITCookBook HTML5 Programming</a>
+        </footer>
+    </div>
+</body>
+
+</html>
